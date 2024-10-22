@@ -1,4 +1,6 @@
 {
+<<<<<<< HEAD
+=======
   "name": "express-js-app",
   "version": "1.0.0",
   "main": "index.js",
@@ -9,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
+>>>>>>> d1f7a408441c9b544c24e4dbdeb9340b05991905
   "dependencies": {
     "express": "^4.21.1",
     "mysql2": "^3.11.3"

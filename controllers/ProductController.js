@@ -9,7 +9,7 @@ exports.createProduct = (req, res) => {
         if (err) {
             res.status(500).json({ error: 'Error creating product' });
         } else {
-            res.status(201).json({ message: 'Product created successfully', id: result.insertId });
+            res.status(201).json({ message: 'Product create successfully', id: result.insertId });
         }
     });
 };

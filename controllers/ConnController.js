@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 // controllers/ConnController.js
+>>>>>>> d1f7a408441c9b544c24e4dbdeb9340b05991905
 const dbConnection = require('../config/database');
 
 exports.connDB = (req, res) => {
@@ -11,4 +14,8 @@ exports.connDB = (req, res) => {
             console.log('Berhasil terhubung ke database');
         }
     });
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> d1f7a408441c9b544c24e4dbdeb9340b05991905
