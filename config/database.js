@@ -4,8 +4,8 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '',
-    database: 'db_express'
+    password: 'Shacia1858',
+    database: 'db_expressjs'
 });
 
 module.exports = connection;
