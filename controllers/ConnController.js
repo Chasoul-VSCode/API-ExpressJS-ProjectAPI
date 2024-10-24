@@ -1,38 +1,73 @@
-const dbConnection = require('../config/database');
+const db = require('../config/database');
 
-exports.connDB = (req, res) => {
-  dbConnection.connect((err) => {
-    if (err) {
-      res.status(500).send('Sorry, DB connection failed!');
-      console.error('Error connecting to database:', err);
-    } else {
-      res.send('Successfully connected to DB!');
-      console.log('Successfully connected to database');
-    }
-  });
+// Create - Menambah Kurir Baru
+exports.createKurir = (req, res) => {
+    const { nama, alamat, telepon } = req.body;
+
+    const query = `INSERT INTO kurir (nama, alamat, telepon) VALUES (?, ?, ?)`;
+    db.query(query, [nama, alamat, telepon], (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.status(201).send({ message: 'Kurir berhasil ditambahkan.', id: result.insertId });
+    });
 };
 
-exports.getAllUsers = (req, res) => {
-  dbConnection.query('SELECT * FROM users', (err, results) => {
-    if (err) {
-      res.status(500).send('Error fetching users');
-      console.error('Error fetching users:', err);
-    } else {
-      res.json(results);
-    }
-  });
+// Read - Mendapatkan Semua Data Kurir
+exports.getAllKurir = (req, res) => {
+    const query = `SELECT * FROM kurir`;
+    db.query(query, (err, results) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.status(200).send(results);
+    });
 };
 
-exports.getUserById = (req, res) => {
-  const id = req.params.id;
-  dbConnection.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
-    if (err) {
-      res.status(500).send('Error fetching user');
-      console.error('Error fetching user:', err);
-    } else if (results.length === 0) {
-      res.status(404).send('User not found');
-    } else {
-      res.json(results[0]);
-    }
-  });
+// Read - Mendapatkan Satu Kurir Berdasarkan ID
+exports.getKurirById = (req, res) => {
+    const { id } = req.params;
+    const query = `SELECT * FROM kurir WHERE id = ?`;
+    db.query(query, [id], (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (result.length === 0) {
+            return res.status(404).send({ message: 'Kurir tidak ditemukan.' });
+        }
+        res.status(200).send(result[0]);
+    });
+};
+
+// Update - Mengupdate Data Kurir
+exports.updateKurir = (req, res) => {
+    const { id } = req.params;
+    const { nama, alamat, telepon } = req.body;
+
+    const query = `UPDATE kurir SET nama = ?, alamat = ?, telepon = ? WHERE id = ?`;
+    db.query(query, [nama, alamat, telepon, id], (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).send({ message: 'Kurir tidak ditemukan.' });
+        }
+        res.status(200).send({ message: 'Data kurir berhasil diperbarui.' });
+    });
+};
+
+// Delete - Menghapus Data Kurir
+exports.deleteKurir = (req, res) => {
+    const { id } = req.params;
+
+    const query = `DELETE FROM kurir WHERE id = ?`;
+    db.query(query, [id], (err, result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).send({ message: 'Kurir tidak ditemukan.' });
+        }
+        res.status(200).send({ message: 'Data kurir berhasil dihapus.' });
+    });
 };
