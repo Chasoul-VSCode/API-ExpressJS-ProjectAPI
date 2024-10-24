@@ -1,9 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const ConnController = require('../controllers/ConnController');
+const kurirController = require('../Controllers/connController');
 
-router.get('/', ConnController.getAllUsers);
-router.get('/users', ConnController.getAllUsers);
-router.get('/users/:id', ConnController.getUserById);
+// Route untuk membuat kurir baru
+router.post('/kurir', kurirController.createKurir);
+
+// Route untuk mendapatkan semua data kurir
+router.get('/kurir', kurirController.getAllKurir);
+
+// Route untuk mendapatkan satu kurir berdasarkan ID
+router.get('/kurir/:id', kurirController.getKurirById);
+
+// Route untuk memperbarui kurir
+router.put('/kurir/:id', kurirController.updateKurir);
+
+// Route untuk menghapus kurir
+router.delete('/kurir/:id', kurirController.deleteKurir);
 
 module.exports = router;
