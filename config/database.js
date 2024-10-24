@@ -1,11 +1,20 @@
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306, // Ubah ke port default MySQL jika menggunakan XAMPP
-  user: 'root',
-  password: '', // Sesuaikan dengan password MySQL Anda jika ada
-  database: 'test_js'
+// Buat koneksi ke database MySQL
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',  // Ganti dengan password MySQL Anda
+    database: 'kurir_db'
 });
 
-module.exports = connection;
+// Cek koneksi database
+db.connect((err) => {
+    if (err) {
+        console.error('Database connection error:', err);
+    } else {
+        console.log('Connected to MySQL database.');
+    }
+});
+
+module.exports = db;
