@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const kurirController = require('../Controllers/connController');
+const kurirController = require('../controllers/ConnController');
 
 // Route untuk membuat kurir baru
 router.post('/kurir', kurirController.createKurir);
