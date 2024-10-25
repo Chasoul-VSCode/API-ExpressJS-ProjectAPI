@@ -1,15 +1,33 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "express": "^4.21.1",
     "mysql2": "^3.11.3"
   },
   "name": "app",
+=======
+<<<<<<< HEAD
+=======
+  "name": "express-js-app",
+>>>>>>> af13b3d11b761e5278b4b4d079cbc129c45ab913
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+<<<<<<< HEAD
   "author": "",
   "license": "ISC",
   "description": ""
+=======
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+>>>>>>> d1f7a408441c9b544c24e4dbdeb9340b05991905
+  "dependencies": {
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3"
+  }
+>>>>>>> af13b3d11b761e5278b4b4d079cbc129c45ab913
 }
