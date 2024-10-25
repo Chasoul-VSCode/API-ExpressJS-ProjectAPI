@@ -4,14 +4,11 @@ const ConnRoutes = require('./routes/ConnRoutes');
 
 const app = express();
 
-// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Routes
 app.use('/api', ConnRoutes);
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
